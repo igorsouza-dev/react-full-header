@@ -49,6 +49,7 @@ describe('<FullHeader/>', () => {
             const wrapper = shallow(<FullHeader />);
             expect(wrapper).to.have.style('background-color').equal('#ccc');
         });
+
         it('should have background-color equal to #000 when #000 is passed', () => {
             const wrapper = shallow(<FullHeader bgColor="#000" />);
             expect(wrapper).to.have.style('background-color').equal('#000');
@@ -60,6 +61,7 @@ describe('<FullHeader/>', () => {
             const wrapper = shallow(<FullHeader />);
             expect(wrapper).to.have.style('color').equal('#fff');
         });
+
         it('should have color equal to #ff0000 when #ff0000 is passed', () => {
             const wrapper = shallow(<FullHeader textColor="#ff0000" />);
             expect(wrapper).to.have.style('color').equal('#ff0000');
@@ -75,6 +77,35 @@ describe('<FullHeader/>', () => {
         it('should have open-sans when open-sans is passed', () => {
             const wrapper = shallow(<FullHeader font="open-sans" />);
             expect(wrapper).to.have.style('font-family').equal('open-sans');
+        });
+    });
+
+    context('bgImg', () => {
+        it('should have background-image equal empty when none is passed', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper).to.have.style('background-image').equal('url()');
+        });
+
+        it('should have background-image equal to bg.jpg when passed', () => {
+            const wrapper = shallow(<FullHeader bgImg="bg.jpg" />);
+            expect(wrapper).to.have.style('background-image').equal('url(bg.jpg)');
+        });
+    });
+
+    context('video', () => {
+        it('should have the video tag when a video is passed', () => {
+            const wrapper = shallow(<FullHeader video="my_video.mp4" />);
+            expect(wrapper.find('video')).to.have.length(1);
+        });
+
+        it('should not have the video tag when a video is not passed', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper.find('video')).to.have.length(0);
+        });
+
+        it('should have source video equal to video passed', () => {
+            const wrapper = shallow(<FullHeader video="my_video.mp4" />);
+            expect(wrapper.find('video').props().src).to.be.equal('my_video.mp4');
         });
     });
 });

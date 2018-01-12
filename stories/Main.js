@@ -1,5 +1,5 @@
 import React from 'react';
-import FullHeader from '../src/Main'; // This is our component
+import FullHeader from '../src/Main';
 import { storiesOf } from '@storybook/react';
 
 storiesOf('React Full Header', module)
@@ -22,17 +22,28 @@ storiesOf('React Full Header', module)
             textColor="#ff9900"
         />
     )
+    .add('with title, subtitle, bgColor, textColor and font', () => (
+        <FullHeader
+            title="TDD"
+            subtitle="Curso de JS com TDD na prática."
+            bgColor="#96060C"
+            textColor="#FF9900"
+            font="cursive"
+        />
+    ))
     .add('with title, subtitle, bgImg', () =>
         <FullHeader
             title="TDD"
             subtitle="Curso de Javascript com TDD na prática."
-            bgImg="https://i.ytimg.com/vi/4DzUW4fI1s0/maxresdefault.jpg"
+            bgImg="https://raw.githubusercontent.com/willianjusten/photo-examples/master/iceland-glacier.jpg"
         />
     )
     .add('with title, subtitle, video', () =>
         <FullHeader
             title="TDD"
             subtitle="Curso de Javascript com TDD na prática."
-            video="https://www.youtube.com/watch?v=MQoil6J2vYo"
+            bgColor="#EBE9EB"
+            textColor="#3299BB"
+            video="http://thenewcode.com/assets/videos/polina.mp4"
         />
     );
